@@ -1,40 +1,44 @@
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, ExternalLink } from "lucide-react";
 
 const videos = [
   {
     id: 1,
-    title: "E-Commerce Product Promo",
+    title: "Launch Catalyst Video",
     thumbnail: "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=800&h=450&fit=crop",
-    duration: "0:45",
-    category: "Product Video",
+    duration: "2:45",
+    category: "Product Launch",
+    url: "https://launch-catalyst-video.netlify.app",
   },
   {
     id: 2,
-    title: "Brand Campaign Reel",
+    title: "Brand Heart Documentary",
     thumbnail: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=450&fit=crop",
-    duration: "1:30",
-    category: "Campaign",
+    duration: "4:30",
+    category: "Documentary",
+    url: "https://brandheartdocumentry.netlify.app",
   },
   {
     id: 3,
-    title: "Social Media Ad Cut",
+    title: "Holiday Revenue Campaign",
     thumbnail: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=800&h=450&fit=crop",
-    duration: "0:15",
-    category: "Social Media",
+    duration: "1:15",
+    category: "Campaign",
+    url: "https://holidayrevenuerocket.netlify.app",
   },
   {
     id: 4,
-    title: "Behind The Scenes",
+    title: "Aura Cartel Experience",
     thumbnail: "https://images.unsplash.com/photo-1576633587382-13ddf37b1fc1?w=800&h=450&fit=crop",
-    duration: "2:15",
-    category: "Documentary",
+    duration: "3:20",
+    category: "Brand Experience",
+    url: "https://aura-cartel-experience.netlify.app",
   },
 ];
 
 const VideoShowcase = () => {
   return (
-    <section className="py-24 bg-background">
+    <section id="videos" className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -55,12 +59,15 @@ const VideoShowcase = () => {
         </motion.div>
 
         {/* Featured Video */}
-        <motion.div
+        <motion.a
+          href="https://brandheartdocumentry.netlify.app"
+          target="_blank"
+          rel="noopener noreferrer"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative aspect-video rounded-3xl overflow-hidden mb-8 group cursor-pointer"
+          className="relative aspect-video rounded-3xl overflow-hidden mb-8 group cursor-pointer block"
         >
           <img
             src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1600&h=900&fit=crop"
@@ -80,23 +87,27 @@ const VideoShowcase = () => {
             <span className="inline-block px-3 py-1 bg-background/80 backdrop-blur-sm text-foreground text-xs font-medium rounded-full mb-3">
               Featured Project
             </span>
-            <h3 className="font-display text-2xl md:text-4xl font-bold text-foreground">
-              Brand Story Documentary
+            <h3 className="font-display text-2xl md:text-4xl font-bold text-foreground flex items-center gap-3">
+              Brand Heart Documentary
+              <ExternalLink className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity" />
             </h3>
-            <p className="text-muted-foreground mt-2">Award-winning brand film • 4:32</p>
+            <p className="text-muted-foreground mt-2">Award-winning brand documentary • 4:30</p>
           </div>
-        </motion.div>
+        </motion.a>
 
         {/* Video Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {videos.map((video, index) => (
-            <motion.div
+            <motion.a
               key={video.id}
+              href={video.url}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group cursor-pointer"
+              className="group cursor-pointer block"
             >
               <div className="relative aspect-video rounded-xl overflow-hidden mb-3">
                 <img
@@ -115,10 +126,11 @@ const VideoShowcase = () => {
                 </span>
               </div>
               <span className="text-xs text-accent font-medium">{video.category}</span>
-              <h4 className="font-medium text-foreground group-hover:text-accent transition-colors">
+              <h4 className="font-medium text-foreground group-hover:text-accent transition-colors flex items-center gap-2">
                 {video.title}
+                <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
               </h4>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
