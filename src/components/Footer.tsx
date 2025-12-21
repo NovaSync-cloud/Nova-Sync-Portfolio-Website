@@ -1,20 +1,62 @@
+import { Instagram, Linkedin, Facebook, MessageCircle } from "lucide-react";
+
 const Footer = () => {
   return (
-    <footer className="py-8 bg-card border-t border-border">
+    <footer className="py-12 bg-card border-t border-border">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-muted-foreground text-sm">
-            © 2024 Creative Portfolio. All rights reserved.
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Logo & Copyright */}
+          <div className="text-center md:text-left">
+            <a href="#home" className="font-display text-xl font-bold text-foreground mb-2 block">
+              Nova<span className="text-accent">Sync</span>
+            </a>
+            <p className="text-muted-foreground text-sm">
+              © 2024 Nova Sync. All rights reserved.
+            </p>
+          </div>
+          
+          {/* Tagline */}
+          <p className="text-muted-foreground text-sm text-center hidden lg:block">
+            Where design meets <span className="text-accent">results</span>.
           </p>
-          <div className="flex items-center gap-6">
-            <a href="#" className="text-muted-foreground hover:text-accent text-sm transition-colors">
-              LinkedIn
+          
+          {/* Social Links */}
+          <div className="flex items-center gap-4">
+            <a
+              href="https://wa.me/message/62PWVK7X73BMD1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-accent/50 transition-colors"
+              aria-label="WhatsApp"
+            >
+              <MessageCircle className="w-5 h-5" />
             </a>
-            <a href="#" className="text-muted-foreground hover:text-accent text-sm transition-colors">
-              Behance
+            <a
+              href="https://www.instagram.com/official_novasync/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-accent/50 transition-colors"
+              aria-label="Instagram"
+            >
+              <Instagram className="w-5 h-5" />
             </a>
-            <a href="#" className="text-muted-foreground hover:text-accent text-sm transition-colors">
-              Dribbble
+            <a
+              href="https://www.linkedin.com/in/olorunda-bosede-precious-4b76b6307/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-accent/50 transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a
+              href="https://web.facebook.com/people/Bosede-Precious/61579871825205/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-accent/50 transition-colors"
+              aria-label="Facebook"
+            >
+              <Facebook className="w-5 h-5" />
             </a>
           </div>
         </div>

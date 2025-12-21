@@ -1,8 +1,10 @@
 import { Helmet } from "react-helmet-async";
+import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import PortfolioGrid from "@/components/PortfolioGrid";
 import VideoShowcase from "@/components/VideoShowcase";
 import MoreWork from "@/components/MoreWork";
+import AboutSection from "@/components/AboutSection";
 import SkillsSection from "@/components/SkillsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -11,18 +13,21 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Creative Portfolio | E-Commerce, Marketing & Video Production</title>
+        <title>Nova Sync | Bosede Precious Olorunda - Web Design & Conversion Specialist</title>
         <meta 
           name="description" 
-          content="Creative portfolio showcasing e-commerce branding, digital marketing campaigns, and professional video editing projects. View my work in brand growth and visual storytelling." 
+          content="Nova Sync builds high-converting websites, e-commerce platforms, sales funnels, and CRM automation. Transform traffic into customers with conversion-focused web design." 
         />
       </Helmet>
+      
+      <Navbar />
       
       <main className="min-h-screen bg-background">
         <HeroSection />
         <PortfolioGrid />
         <VideoShowcase />
         <MoreWork />
+        <AboutSection />
         <SkillsSection />
         <ContactSection />
         <Footer />
