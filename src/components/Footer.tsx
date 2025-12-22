@@ -1,4 +1,4 @@
-import { Instagram, Linkedin, Facebook, MessageCircle } from "lucide-react";
+import { Instagram, Linkedin, Facebook, MessageCircle, Send } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -26,16 +26,25 @@ const Footer = () => {
               href="https://wa.me/message/62PWVK7X73BMD1"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-accent/50 transition-colors"
+              className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-green-500/50 transition-colors"
               aria-label="WhatsApp"
             >
               <MessageCircle className="w-5 h-5" />
             </a>
             <a
+              href="https://t.me/official_nova_sync"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-blue-400/50 transition-colors"
+              aria-label="Telegram"
+            >
+              <Send className="w-5 h-5" />
+            </a>
+            <a
               href="https://www.instagram.com/official_novasync/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-accent/50 transition-colors"
+              className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-pink-500/50 transition-colors"
               aria-label="Instagram"
             >
               <Instagram className="w-5 h-5" />
@@ -44,7 +53,7 @@ const Footer = () => {
               href="https://www.linkedin.com/in/olorunda-bosede-precious-4b76b6307/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-accent/50 transition-colors"
+              className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-blue-500/50 transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
@@ -53,7 +62,7 @@ const Footer = () => {
               href="https://web.facebook.com/people/Bosede-Precious/61579871825205/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-accent/50 transition-colors"
+              className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-blue-600/50 transition-colors"
               aria-label="Facebook"
             >
               <Facebook className="w-5 h-5" />

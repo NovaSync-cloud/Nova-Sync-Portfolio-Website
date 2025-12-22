@@ -1,20 +1,22 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import ContactModal from "./ContactModal";
 
 const navLinks = [
   { name: "Home", href: "#home" },
   { name: "Portfolio", href: "#portfolio" },
   { name: "Videos", href: "#videos" },
-  { name: "More Work", href: "#more-work" },
+  { name: "Services", href: "#services" },
   { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
+  { name: "Testimonials", href: "#testimonials" },
   { name: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,16 +77,14 @@ const Navbar = () => {
                   {link.name}
                 </motion.a>
               ))}
-              <motion.a
-                href="https://wa.me/message/62PWVK7X73BMD1"
-                target="_blank"
-                rel="noopener noreferrer"
+              <motion.button
+                onClick={() => setIsContactModalOpen(true)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="btn-primary px-6 py-3 text-sm"
               >
                 Let's Talk
-              </motion.a>
+              </motion.button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -134,22 +134,29 @@ const Navbar = () => {
                     {link.name}
                   </motion.a>
                 ))}
-                <motion.a
-                  href="https://wa.me/message/62PWVK7X73BMD1"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <motion.button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsContactModalOpen(true);
+                  }}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: navLinks.length * 0.05 }}
                   className="btn-primary mt-4 text-center"
                 >
                   Let's Talk
-                </motion.a>
+                </motion.button>
               </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Contact Modal */}
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
     </>
   );
 };

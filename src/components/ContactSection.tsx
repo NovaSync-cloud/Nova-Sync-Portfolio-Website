@@ -6,7 +6,8 @@ import {
   Instagram,
   Linkedin,
   Facebook,
-  Slack
+  Slack,
+  Send
 } from "lucide-react";
 
 const socialLinks = [
@@ -15,6 +16,12 @@ const socialLinks = [
     label: "WhatsApp", 
     href: "https://wa.me/message/62PWVK7X73BMD1",
     color: "hover:bg-green-500/20 hover:border-green-500/50"
+  },
+  { 
+    icon: Send, 
+    label: "Telegram", 
+    href: "https://t.me/official_nova_sync",
+    color: "hover:bg-blue-400/20 hover:border-blue-400/50"
   },
   { 
     icon: Phone, 

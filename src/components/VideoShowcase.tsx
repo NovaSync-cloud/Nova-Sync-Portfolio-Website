@@ -1,42 +1,71 @@
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Play, ExternalLink } from "lucide-react";
+import { Play, Pause, X } from "lucide-react";
 
 const videos = [
   {
     id: 1,
-    title: "Launch Catalyst Video",
+    title: "Digital Portfolio Showcase",
     thumbnail: "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=800&h=450&fit=crop",
-    duration: "2:45",
-    category: "Product Launch",
-    url: "https://launch-catalyst-video.netlify.app",
+    category: "Portfolio",
+    videoUrl: "/videos/portfolio-website-1.mp4",
   },
   {
     id: 2,
-    title: "Brand Heart Documentary",
-    thumbnail: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=450&fit=crop",
-    duration: "4:30",
-    category: "Documentary",
-    url: "https://brandheartdocumentry.netlify.app",
+    title: "Instagram Portfolio Video",
+    thumbnail: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&h=450&fit=crop",
+    category: "Social Media",
+    videoUrl: "/videos/instagram-portfolio.mp4",
   },
   {
     id: 3,
-    title: "Holiday Revenue Campaign",
-    thumbnail: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=800&h=450&fit=crop",
-    duration: "1:15",
-    category: "Campaign",
-    url: "https://holidayrevenuerocket.netlify.app",
+    title: "Project Recording",
+    thumbnail: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=450&fit=crop",
+    category: "Case Study",
+    videoUrl: "/videos/project-recording.mp4",
   },
   {
     id: 4,
-    title: "Aura Cartel Experience",
+    title: "Digital Craft Studio",
+    thumbnail: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=800&h=450&fit=crop",
+    category: "Branding",
+    videoUrl: "/videos/digital-craft-studio.mp4",
+  },
+  {
+    id: 5,
+    title: "Portfolio Website 2",
     thumbnail: "https://images.unsplash.com/photo-1576633587382-13ddf37b1fc1?w=800&h=450&fit=crop",
-    duration: "3:20",
-    category: "Brand Experience",
-    url: "https://aura-cartel-experience.netlify.app",
+    category: "Web Design",
+    videoUrl: "/videos/portfolio-website-2.mp4",
   },
 ];
 
 const VideoShowcase = () => {
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handlePlayVideo = (videoUrl: string) => {
+    setActiveVideo(videoUrl);
+    setIsPlaying(true);
+  };
+
+  const handleCloseVideo = () => {
+    setActiveVideo(null);
+    setIsPlaying(false);
+  };
+
+  const togglePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   return (
     <section id="videos" className="py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -59,19 +88,17 @@ const VideoShowcase = () => {
         </motion.div>
 
         {/* Featured Video */}
-        <motion.a
-          href="https://brandheartdocumentry.netlify.app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative aspect-video rounded-3xl overflow-hidden mb-8 group cursor-pointer block"
+          onClick={() => handlePlayVideo(videos[0].videoUrl)}
+          className="relative aspect-video rounded-3xl overflow-hidden mb-8 group cursor-pointer"
         >
           <img
-            src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1600&h=900&fit=crop"
-            alt="Featured video"
+            src={videos[0].thumbnail}
+            alt={videos[0].title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-background/40 group-hover:bg-background/30 transition-colors duration-300" />
@@ -87,27 +114,24 @@ const VideoShowcase = () => {
             <span className="inline-block px-3 py-1 bg-background/80 backdrop-blur-sm text-foreground text-xs font-medium rounded-full mb-3">
               Featured Project
             </span>
-            <h3 className="font-display text-2xl md:text-4xl font-bold text-foreground flex items-center gap-3">
-              Brand Heart Documentary
-              <ExternalLink className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <h3 className="font-display text-2xl md:text-4xl font-bold text-foreground">
+              {videos[0].title}
             </h3>
-            <p className="text-muted-foreground mt-2">Award-winning brand documentary • 4:30</p>
+            <p className="text-muted-foreground mt-2">{videos[0].category}</p>
           </div>
-        </motion.a>
+        </motion.div>
 
         {/* Video Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {videos.map((video, index) => (
-            <motion.a
+          {videos.slice(1).map((video, index) => (
+            <motion.div
               key={video.id}
-              href={video.url}
-              target="_blank"
-              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group cursor-pointer block"
+              onClick={() => handlePlayVideo(video.videoUrl)}
+              className="group cursor-pointer"
             >
               <div className="relative aspect-video rounded-xl overflow-hidden mb-3">
                 <img
@@ -121,19 +145,53 @@ const VideoShowcase = () => {
                     <Play className="w-5 h-5 text-accent-foreground ml-0.5" fill="currentColor" />
                   </div>
                 </div>
-                <span className="absolute bottom-2 right-2 px-2 py-0.5 bg-background/80 backdrop-blur-sm text-foreground text-xs rounded">
-                  {video.duration}
-                </span>
               </div>
               <span className="text-xs text-accent font-medium">{video.category}</span>
-              <h4 className="font-medium text-foreground group-hover:text-accent transition-colors flex items-center gap-2">
+              <h4 className="font-medium text-foreground group-hover:text-accent transition-colors">
                 {video.title}
-                <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
               </h4>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Video Modal */}
+      {activeVideo && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-xl p-4"
+          onClick={handleCloseVideo}
+        >
+          <div 
+            className="relative w-full max-w-5xl aspect-video"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={handleCloseVideo}
+              className="absolute -top-12 right-0 p-2 text-foreground hover:text-accent transition-colors"
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <video
+              ref={videoRef}
+              src={activeVideo}
+              className="w-full h-full rounded-2xl bg-card"
+              controls
+              autoPlay
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+            />
+            <button
+              onClick={togglePlayPause}
+              className="absolute bottom-4 left-4 p-3 rounded-full bg-accent/90 text-accent-foreground hover:bg-accent transition-colors"
+            >
+              {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5 ml-0.5" fill="currentColor" />}
+            </button>
+          </div>
+        </motion.div>
+      )}
     </section>
   );
 };
