@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { 
   Globe, ShoppingCart, TrendingUp, Cog, Mail, Users, Smartphone, Zap,
-  Check, ArrowRight, Sparkles
+  Check, ArrowRight, Sparkles, Star, Clock, Shield, Headphones, Rocket
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -20,7 +20,8 @@ const services = [
       "Custom Landing Pages",
       "WordPress & Webflow Development",
     ],
-    color: "from-orange-500/20 to-red-500/20",
+    gradient: "from-orange-500 to-red-500",
+    price: "Starting at $1,500",
   },
   {
     icon: ShoppingCart,
@@ -33,7 +34,8 @@ const services = [
       "Product Page Optimization",
       "Payment Gateway Integration",
     ],
-    color: "from-blue-500/20 to-cyan-500/20",
+    gradient: "from-blue-500 to-cyan-500",
+    price: "Starting at $2,000",
   },
   {
     icon: TrendingUp,
@@ -46,7 +48,8 @@ const services = [
       "A/B Testing & CRO",
       "PPC Landing Page Optimization",
     ],
-    color: "from-green-500/20 to-emerald-500/20",
+    gradient: "from-green-500 to-emerald-500",
+    price: "Starting at $1,200",
   },
   {
     icon: Cog,
@@ -59,7 +62,8 @@ const services = [
       "Zapier & API Integrations",
       "Third-Party Tool Integrations",
     ],
-    color: "from-purple-500/20 to-pink-500/20",
+    gradient: "from-purple-500 to-pink-500",
+    price: "Starting at $800",
   },
   {
     icon: Mail,
@@ -72,7 +76,8 @@ const services = [
       "List Building & Lead Nurturing",
       "Platform Setup (Mailchimp, Klaviyo)",
     ],
-    color: "from-yellow-500/20 to-orange-500/20",
+    gradient: "from-yellow-500 to-orange-500",
+    price: "Starting at $600",
   },
   {
     icon: Users,
@@ -85,7 +90,8 @@ const services = [
       "CRM-Driven Lead Management",
       "Conversion-Focused Forms",
     ],
-    color: "from-indigo-500/20 to-blue-500/20",
+    gradient: "from-indigo-500 to-blue-500",
+    price: "Starting at $1,000",
   },
   {
     icon: Smartphone,
@@ -98,7 +104,8 @@ const services = [
       "Screenshot & Visual Optimization",
       "Review Growth Strategy",
     ],
-    color: "from-teal-500/20 to-cyan-500/20",
+    gradient: "from-teal-500 to-cyan-500",
+    price: "Starting at $500",
   },
   {
     icon: Zap,
@@ -111,17 +118,31 @@ const services = [
       "Database-Driven Applications",
       "Hosting & Cloud Setup",
     ],
-    color: "from-rose-500/20 to-pink-500/20",
+    gradient: "from-rose-500 to-pink-500",
+    price: "Starting at $700",
   },
 ];
 
 const processSteps = [
-  { step: "01", title: "Discovery", description: "We discuss your goals, audience, and vision for the project." },
-  { step: "02", title: "Strategy", description: "I create a conversion-focused plan tailored to your needs." },
-  { step: "03", title: "Design", description: "Beautiful, strategic designs that guide users to action." },
-  { step: "04", title: "Development", description: "Clean, fast, and responsive code that performs." },
-  { step: "05", title: "Launch", description: "Thorough testing and smooth deployment of your project." },
-  { step: "06", title: "Growth", description: "Ongoing optimization and support for continued success." },
+  { step: "01", title: "Discovery Call", description: "We discuss your goals, audience, and vision for the project in a free 30-minute consultation." },
+  { step: "02", title: "Strategy & Proposal", description: "I create a detailed conversion-focused plan tailored to your specific needs and budget." },
+  { step: "03", title: "Design Phase", description: "Beautiful, strategic designs that guide users to action. You get unlimited revisions until perfect." },
+  { step: "04", title: "Development", description: "Clean, fast, and responsive code that performs. Built with the latest technologies." },
+  { step: "05", title: "Testing & Launch", description: "Thorough testing across devices and browsers, followed by smooth deployment." },
+  { step: "06", title: "Ongoing Support", description: "30-day free support post-launch, plus ongoing optimization options for continued success." },
+];
+
+const benefits = [
+  { icon: Clock, title: "Fast Turnaround", description: "Most projects delivered within 2-4 weeks" },
+  { icon: Shield, title: "Quality Guaranteed", description: "100% satisfaction or money back" },
+  { icon: Headphones, title: "24/7 Support", description: "Always available when you need help" },
+  { icon: Rocket, title: "Conversion Focused", description: "Every design decision drives results" },
+];
+
+const testimonials = [
+  { name: "Alex Thompson", role: "CEO, TechStart", text: "Nova Sync delivered a website that increased our conversions by 250%. Absolutely incredible work.", rating: 5 },
+  { name: "Sarah Chen", role: "Founder, StyleHub", text: "The e-commerce site exceeded all expectations. Sales doubled within the first month.", rating: 5 },
+  { name: "Michael Ross", role: "Marketing Director", text: "Best investment we made. The sales funnel generates leads on autopilot now.", rating: 5 },
 ];
 
 const Services = () => {
@@ -135,11 +156,20 @@ const Services = () => {
       <Navbar />
       
       <main className="min-h-screen bg-background pt-20">
-        {/* Hero */}
-        <section className="py-24 relative overflow-hidden">
+        {/* Dramatic Hero */}
+        <section className="py-32 relative overflow-hidden">
           <div className="absolute inset-0">
-            <div className="absolute top-20 left-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[150px]" />
-            <div className="absolute bottom-20 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px]" />
+            <div className="absolute inset-0 bg-gradient-to-br from-card via-background to-card" />
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
+              className="absolute top-0 right-0 w-[1000px] h-[1000px] -translate-y-1/2 translate-x-1/2"
+            >
+              <div className="w-full h-full border border-accent/10 rounded-full" />
+              <div className="absolute inset-10 border border-accent/10 rounded-full" />
+              <div className="absolute inset-20 border border-accent/10 rounded-full" />
+            </motion.div>
+            <div className="absolute top-40 left-20 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[200px]" />
           </div>
           
           <div className="container mx-auto px-6 relative z-10">
@@ -147,32 +177,77 @@ const Services = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center max-w-4xl mx-auto"
+              className="text-center max-w-5xl mx-auto"
             >
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.2, type: "spring" }}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium tracking-wider uppercase mb-8"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium tracking-wider uppercase mb-10"
               >
-                <Sparkles className="w-4 h-4" />
-                Full-Stack Digital Services
+                <Sparkles className="w-5 h-5" />
+                Full-Stack Digital Solutions
               </motion.div>
               
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-8">
-                Services That <span className="text-accent">Deliver</span> Results
-              </h1>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-tight mb-8"
+              >
+                Services That
+                <span className="text-accent block mt-2">Drive Results</span>
+              </motion.h1>
               
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12">
-                From stunning web design to powerful automation, I offer comprehensive digital solutions 
-                that help your business grow and convert.
-              </p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12"
+              >
+                From stunning web design to powerful automation, comprehensive digital solutions 
+                that transform your online presence and accelerate growth.
+              </motion.p>
               
-              <Link to="/contact" className="btn-primary inline-flex items-center gap-2">
-                Get Started
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex flex-wrap justify-center gap-4"
+              >
+                <Link to="/contact" className="btn-primary inline-flex items-center gap-2 text-lg px-8 py-4">
+                  Book Free Consultation
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+                <Link to="/portfolio" className="btn-secondary text-lg px-8 py-4">
+                  View Portfolio
+                </Link>
+              </motion.div>
             </motion.div>
+          </div>
+        </section>
+        
+        {/* Benefits Bar */}
+        <section className="py-8 bg-accent">
+          <div className="container mx-auto px-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {benefits.map((benefit, index) => (
+                <motion.div
+                  key={benefit.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-center gap-3 text-accent-foreground"
+                >
+                  <benefit.icon className="w-6 h-6 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-bold">{benefit.title}</h3>
+                    <p className="text-sm opacity-80">{benefit.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
         
@@ -181,6 +256,20 @@ const Services = () => {
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
           
           <div className="container mx-auto px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <span className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium tracking-wider uppercase mb-4">
+                What I Offer
+              </span>
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
+                Comprehensive <span className="text-accent">Solutions</span>
+              </h2>
+            </motion.div>
+            
             <div className="grid lg:grid-cols-2 gap-8">
               {services.map((service, index) => (
                 <motion.div
@@ -191,16 +280,19 @@ const Services = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="group relative"
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                  <div className="relative p-8 rounded-3xl bg-background border border-border hover:border-accent/30 transition-all duration-300">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
+                  <div className="relative p-8 rounded-3xl bg-background border border-border hover:border-accent/30 transition-all duration-300 h-full">
                     <div className="flex items-start gap-6">
-                      <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                        <service.icon className="w-8 h-8 text-accent" />
+                      <div className={`flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center shadow-lg`}>
+                        <service.icon className="w-8 h-8 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-display text-2xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors">
-                          {service.title}
-                        </h3>
+                        <div className="flex items-center justify-between mb-3">
+                          <h3 className="font-display text-2xl font-bold text-foreground group-hover:text-accent transition-colors">
+                            {service.title}
+                          </h3>
+                          <span className="text-accent font-semibold text-sm">{service.price}</span>
+                        </div>
                         <p className="text-muted-foreground mb-6">{service.description}</p>
                         <ul className="space-y-3">
                           {service.features.map((feature) => (
@@ -221,7 +313,9 @@ const Services = () => {
         
         {/* Process Section */}
         <section className="py-24 bg-background relative overflow-hidden">
-          <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+          <div className="absolute inset-0">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[200px]" />
+          </div>
           
           <div className="container mx-auto px-6 relative z-10">
             <motion.div
@@ -231,10 +325,10 @@ const Services = () => {
               className="text-center mb-16"
             >
               <span className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium tracking-wider uppercase mb-4">
-                My Process
+                How It Works
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
-                How We <span className="text-accent">Work Together</span>
+                My Proven <span className="text-accent">Process</span>
               </h2>
             </motion.div>
             
@@ -248,9 +342,9 @@ const Services = () => {
                   transition={{ delay: index * 0.1 }}
                   className="relative p-8 rounded-3xl bg-card border border-border hover:border-accent/30 transition-all duration-300 group"
                 >
-                  <span className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-accent text-accent-foreground font-display font-bold flex items-center justify-center text-lg">
+                  <div className="absolute -top-5 -left-2 w-14 h-14 rounded-full bg-gradient-to-br from-accent to-accent/80 text-accent-foreground font-display font-bold flex items-center justify-center text-xl shadow-lg shadow-accent/30">
                     {step.step}
-                  </span>
+                  </div>
                   <h3 className="font-display text-xl font-bold text-foreground mb-3 mt-4 group-hover:text-accent transition-colors">
                     {step.title}
                   </h3>
@@ -261,9 +355,52 @@ const Services = () => {
           </div>
         </section>
         
+        {/* Testimonials */}
+        <section className="py-24 bg-card">
+          <div className="container mx-auto px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <span className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium tracking-wider uppercase mb-4">
+                Client Love
+              </span>
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
+                What Clients <span className="text-accent">Say</span>
+              </h2>
+            </motion.div>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={testimonial.name}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="p-8 rounded-3xl bg-background border border-border"
+                >
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 text-accent fill-accent" />
+                    ))}
+                  </div>
+                  <p className="text-foreground mb-6">"{testimonial.text}"</p>
+                  <div>
+                    <p className="font-display font-bold text-foreground">{testimonial.name}</p>
+                    <p className="text-muted-foreground text-sm">{testimonial.role}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+        
         {/* CTA */}
-        <section className="py-24 bg-card relative">
-          <div className="absolute inset-0 bg-gradient-to-t from-accent/5 to-transparent" />
+        <section className="py-24 bg-background relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-accent/10 to-transparent" />
           
           <div className="container mx-auto px-6 relative z-10">
             <motion.div
@@ -272,16 +409,26 @@ const Services = () => {
               viewport={{ once: true }}
               className="text-center max-w-3xl mx-auto"
             >
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Let's Build Something <span className="text-accent">Incredible</span>
+              <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-6">
+                Ready to Transform Your <span className="text-accent">Business</span>?
               </h2>
-              <p className="text-muted-foreground text-lg mb-10">
-                Ready to transform your online presence? Let's discuss your project.
+              <p className="text-muted-foreground text-xl mb-10">
+                Book a free 30-minute consultation and let's discuss your project.
               </p>
-              <Link to="/contact" className="btn-primary inline-flex items-center gap-2">
-                Start Your Project
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link to="/contact" className="btn-primary inline-flex items-center gap-2 text-lg px-8 py-4">
+                  Book Free Call
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+                <a 
+                  href="https://wa.me/message/62PWVK7X73BMD1" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn-secondary text-lg px-8 py-4"
+                >
+                  WhatsApp Me
+                </a>
+              </div>
             </motion.div>
           </div>
         </section>
