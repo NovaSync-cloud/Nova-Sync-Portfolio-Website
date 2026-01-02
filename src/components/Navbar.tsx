@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import ContactModal from "./ContactModal";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -43,7 +44,8 @@ const Navbar = () => {
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-20">
             <motion.div whileHover={{ scale: 1.05 }}>
-              <Link to="/" className="font-display text-2xl font-bold text-foreground">
+              <Link to="/" className="flex items-center gap-3 font-display text-2xl font-bold text-foreground">
+                <img src={logo} alt="Nova Sync Logo" className="w-8 h-8 object-contain" />
                 Nova<span className="text-accent">Sync</span>
               </Link>
             </motion.div>
