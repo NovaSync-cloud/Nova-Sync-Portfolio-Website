@@ -1,4 +1,4 @@
-import { Instagram, Linkedin, Facebook, MessageCircle, Send } from "lucide-react";
+import { Instagram, Linkedin, Facebook, MessageCircle, Send, Mail, MessageSquare } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -21,7 +21,7 @@ const Footer = () => {
           </p>
           
           {/* Social Links */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-wrap justify-center md:justify-end">
             <a
               href="https://wa.me/2348027151618"
               target="_blank"
@@ -39,6 +39,13 @@ const Footer = () => {
               aria-label="Telegram"
             >
               <Send className="w-5 h-5" />
+            </a>
+            <a
+              href="mailto:officialnovasync@gmail.com"
+              className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-red-500/50 transition-colors"
+              aria-label="Email"
+            >
+              <Mail className="w-5 h-5" />
             </a>
             <a
               href="https://www.instagram.com/official_novasync/"
@@ -66,6 +73,15 @@ const Footer = () => {
               aria-label="Facebook"
             >
               <Facebook className="w-5 h-5" />
+            </a>
+            <a
+              href="https://discordapp.com/users/1142075893108457632"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-indigo-500/50 transition-colors"
+              aria-label="Discord"
+            >
+              <MessageSquare className="w-5 h-5" />
             </a>
           </div>
         </div>

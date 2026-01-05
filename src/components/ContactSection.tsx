@@ -7,7 +7,9 @@ import {
   Linkedin,
   Facebook,
   Slack,
-  Send
+  Send,
+  Mail,
+  MessageSquare
 } from "lucide-react";
 
 const socialLinks = [
@@ -22,6 +24,12 @@ const socialLinks = [
     label: "Telegram", 
     href: "https://t.me/official_nova_sync",
     color: "hover:bg-blue-400/20 hover:border-blue-400/50"
+  },
+  { 
+    icon: Mail, 
+    label: "Email", 
+    href: "mailto:officialnovasync@gmail.com",
+    color: "hover:bg-red-500/20 hover:border-red-500/50"
   },
   { 
     icon: Phone, 
@@ -46,6 +54,12 @@ const socialLinks = [
     label: "LinkedIn", 
     href: "https://www.linkedin.com/in/olorunda-bosede-precious-4b76b6307/",
     color: "hover:bg-blue-600/20 hover:border-blue-600/50"
+  },
+  { 
+    icon: MessageSquare, 
+    label: "Discord", 
+    href: "https://discordapp.com/users/1142075893108457632",
+    color: "hover:bg-indigo-500/20 hover:border-indigo-500/50"
   },
   { 
     icon: Slack, 
