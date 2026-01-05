@@ -5,6 +5,7 @@ import PortfolioGrid from "@/components/PortfolioGrid";
 import VideoShowcase from "@/components/VideoShowcase";
 import ServicesSection from "@/components/ServicesSection";
 import MoreWork from "@/components/MoreWork";
+import CaseStudiesSection from "@/components/CaseStudiesSection";
 import AboutSection from "@/components/AboutSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import SkillsSection from "@/components/SkillsSection";
@@ -30,6 +31,7 @@ const Index = () => {
         <VideoShowcase />
         <ServicesSection />
         <MoreWork />
+        <CaseStudiesSection />
         <AboutSection />
         <TestimonialsSection />
         <SkillsSection />

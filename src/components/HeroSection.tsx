@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import heroBackground from "@/assets/hero-background.jpg";
 
 const overlayTexts = [
   { text: "Most websites look good.", highlight: "Few actually convert." },
@@ -27,14 +26,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <img src={heroBackground} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-background/80" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background" />
-      </div>
-      
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
       {/* Animated overlay effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 left-10 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[120px] animate-pulse" />
